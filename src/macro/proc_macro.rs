@@ -1,5 +1,6 @@
-#[macro_export]
 /// 输出宏
+///
+/// [官方文档](https://docs.ltpp.vip/LTPP-RUST-OUTPUT/)
 ///
 /// # 参数
 /// - Output: 输出结构体
@@ -11,39 +12,73 @@
 /// ```rust
 /// use ltpp_output::*;
 /// output_macro!(Output {
-///     text: "test_output_struct",
-///     text_color: Some(Color::Default),
-///     text_bg_color: Some(Color::Red),
+///     text: "test_proc_macro",
+///     text_color: Some(ColorType::default()),
+///     text_bg_color: Some(ColorType::Use(Color::Yellow)),
 ///     show_time: Some(true),
 ///     show_code_location: Some(true),
-///     time_text_color: Some(Color::Green),
-///     time_bg_color: Some(Color::Red),
-///     code_location_text_color: Some(Color::Blue),
-///     code_location_bg_color: Some(Color::Red),
+///     time_text_color: Some(ColorType::Use(Color::Green)),
+///     time_bg_color: Some(ColorType::Use(Color::Yellow)),
+///     code_location_text_color: Some(ColorType::Use(Color::Blue)),
+///     code_location_bg_color: Some(ColorType::Use(Color::Yellow)),
 ///     split: Some(" => "),
-///     split_color: Some(Color::Cyan),
-///     split_bg_color: Some(Color::Red),
+///     split_color: Some(ColorType::Use(Color::Cyan)),
+///     split_bg_color: Some(ColorType::Use(Color::Yellow)),
 ///     ..Default::default()
 /// });
 /// ```
 ///
 /// ## 使用构造器
-/// use ltpp_output::*;
+///
 /// ```rust
+/// use ltpp_output::*;
+/// output_macro!(OutputBuilder::new()
+///     .set_text("test_output_builder")
+///     .set_text_color(ColorType::Use(Color::Cyan))
+///     .set_time_text_color(ColorType::Use(Color::Blue))
+///     .set_code_location_text_color(ColorType::Use(Color::Yellow))
+///     .set_text_blod(true)
+///     .set_time_text_blod(true)
+///     .set_code_location_text_blod(true)
+///     .set_show_time(true)
+///     .set_show_code_location(true)
+///     .build());
+/// ```
+///
+/// ## 多个传入
+///
+/// ```rust
+/// use ltpp_output::*;
 /// output_macro!(
+///     Output {
+///         text: "test_proc_macro",
+///         text_color: Some(ColorType::Use(Color::Default)),
+///         text_bg_color: Some(ColorType::Use(Color::Yellow)),
+///         show_time: Some(true),
+///         show_code_location: Some(true),
+///         time_text_color: Some(ColorType::Use(Color::Green)),
+///         time_bg_color: Some(ColorType::Use(Color::Yellow)),
+///         code_location_text_color: Some(ColorType::Use(Color::Blue)),
+///         code_location_bg_color: Some(ColorType::Use(Color::Yellow)),
+///         split: Some(" => "),
+///         split_color: Some(ColorType::Use(Color::Cyan)),
+///         split_bg_color: Some(ColorType::Use(Color::Yellow)),
+///         ..Default::default()
+///     },
 ///     OutputBuilder::new()
 ///         .set_text("test_output_builder")
-///         .set_text_color(Color::Cyan)
-///         .set_time_text_color(Color::Blue)
-///         .set_code_location_text_color(Color::Red)
+///         .set_text_color(ColorType::Use(Color::Cyan))
+///         .set_time_text_color(ColorType::Use(Color::Blue))
+///         .set_code_location_text_color(ColorType::Use(Color::Yellow))
 ///         .set_text_blod(true)
 ///         .set_time_text_blod(true)
 ///         .set_code_location_text_blod(true)
 ///         .set_show_time(true)
 ///         .set_show_code_location(true)
-///         .build(),
+///         .build()
 /// );
 /// ```
+#[macro_export]
 macro_rules! output_macro {
     ($($output:expr),*) => {
         $(

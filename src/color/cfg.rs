@@ -1,9 +1,5 @@
-use crate::{
-    color::{blod::BLOD, color::DEFAULT, r#type::Color},
-    ColorType,
-};
-
-use super::r#type::ColorDisplay;
+use crate::*;
+use color::{blod::BLOD, color::DEFAULT};
 
 #[test]
 fn test_text_color() {
@@ -14,7 +10,7 @@ fn test_text_color() {
 
 #[test]
 fn test_text_color_get_str() {
-    let text_color_str: &str = Color::Default.get_str(ColorType::Text);
+    let text_color_str: &str = &Color::Default.get_str(DisplayType::Text);
     let res_text_color_str: &String = &Color::Default.to_string();
     assert_eq!(text_color_str, res_text_color_str);
 }
@@ -35,7 +31,7 @@ fn test_bg_color() {
 
 #[test]
 fn test_bg_color_get_str() {
-    let bg_color_str: &str = Color::Default.get_str(ColorType::Background);
+    let bg_color_str: &str = &Color::Default.get_str(DisplayType::Background);
     let ans_bg_color_str: &String = &Color::Default.to_string();
     assert_eq!(bg_color_str, ans_bg_color_str);
 }

@@ -1,6 +1,5 @@
-use crate::color::r#type::Color;
-
 use super::r#type::Text;
+use crate::*;
 
 #[test]
 fn test_text() {
@@ -8,8 +7,8 @@ fn test_text() {
     let text_default_str: &String = &text_default.get_display_str_cow().into_owned();
     let text: Text<'_> = Text {
         text: "",
-        text_color: Color::default(),
-        text_bg_color: Color::default(),
+        text_color: ColorType::default(),
+        text_bg_color: ColorType::default(),
         blod: false,
     };
     let text_str: &String = &text.get_display_str_cow().into_owned();
