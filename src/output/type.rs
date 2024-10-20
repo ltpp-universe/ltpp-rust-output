@@ -1,8 +1,61 @@
 use crate::color::r#type::{BgColor, TextColor};
 
-use super::output::colored_output;
+use super::output::output;
 
 /// 输出结构体
+/// # 代码示例
+///
+/// ## 结构体输出
+///
+/// ````rust
+/// Output {
+///     text: "test_output_struct_output",
+///     text_color: Some(color::r#type::TextColor::Default),
+///     text_bg_color: Some(color::r#type::BgColor::Red),
+///     show_time: Some(true),
+///     show_code_location: Some(true),
+///     time_text_color: Some(color::r#type::TextColor::Green),
+///     time_bg_color: Some(color::r#type::BgColor::Red),
+///     code_location_text_color: Some(color::r#type::TextColor::Blue),
+///     code_location_bg_color: Some(color::r#type::BgColor::Red),
+///     split: Some(" => "),
+///     split_color: Some(color::r#type::TextColor::Cyan),
+///     split_bg_color: Some(color::r#type::BgColor::Red),
+///     ..Default::default()
+/// }
+/// .output();
+/// ```
+///
+/// ## 构造器输出
+///
+/// ```rust
+/// OutputBuilder::new()
+///     .set_text("test_output_builder_output")
+///     .set_text_color(color::r#type::TextColor::Cyan)
+///     .set_time_text_color(color::r#type::TextColor::Blue)
+///     .set_code_location_text_color(color::r#type::TextColor::Red)
+///     .set_text_blod(true)
+///     .set_time_text_blod(true)
+///     .set_code_location_text_blod(true)
+///     .set_show_time(true)
+///     .set_show_code_location(true)
+///     .build()
+///     .output();
+/// ```
+///
+/// ```rust
+/// OutputBuilder::new()
+///     .set_text("test_output_builder_output")
+///     .set_text_color(color::r#type::TextColor::Cyan)
+///     .set_time_text_color(color::r#type::TextColor::Blue)
+///     .set_code_location_text_color(color::r#type::TextColor::Red)
+///     .set_text_blod(true)
+///     .set_time_text_blod(true)
+///     .set_code_location_text_blod(true)
+///     .set_show_time(true)
+///     .set_show_code_location(true)
+///     .output();
+/// ```
 #[derive(Debug, Clone)]
 pub struct Output<'a> {
     /// 输出文字
@@ -64,7 +117,7 @@ impl<'a> Default for Output<'a> {
 
 impl<'a> Output<'a> {
     pub fn output(self) {
-        colored_output(self);
+        output(self);
     }
 }
 
@@ -167,6 +220,6 @@ impl<'a> OutputBuilder<'a> {
     }
 
     pub fn output(&self) {
-        colored_output(self.output.clone());
+        output(self.output.clone());
     }
 }

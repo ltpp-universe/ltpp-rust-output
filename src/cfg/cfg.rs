@@ -1,14 +1,14 @@
 use crate::{
     color,
     output::{
-        output::colored_output,
+        output::output,
         r#type::{Output, OutputBuilder},
     },
 };
 
 #[test]
 fn test_output_struct() {
-    colored_output(Output {
+    output(Output {
         text: "test_output_struct",
         text_color: Some(color::r#type::TextColor::Default),
         text_bg_color: Some(color::r#type::BgColor::Red),
@@ -44,7 +44,7 @@ fn test_output_struct() {
 
 #[test]
 fn test_output_builder() {
-    colored_output(
+    output(
         OutputBuilder::new()
             .set_text("test_output_builder")
             .set_text_color(color::r#type::TextColor::Cyan)

@@ -4,7 +4,51 @@ use crate::text::r#type::Text;
 use crate::{color::color::DEFAULT, time::time::get_now_time};
 use std::{borrow::Cow, panic};
 
-pub fn colored_output(output: Output) {
+/// 输出
+///
+/// # 参数
+/// `Output`: 输出结构体
+///
+/// # 代码示例
+///
+/// ## 结构体输出
+///
+/// ```rust
+/// output(Output {
+///     text: "test_output_struct",
+///     text_color: Some(color::r#type::TextColor::Default),
+///     text_bg_color: Some(color::r#type::BgColor::Red),
+///     show_time: Some(true),
+///     show_code_location: Some(true),
+///     time_text_color: Some(color::r#type::TextColor::Green),
+///     time_bg_color: Some(color::r#type::BgColor::Red),
+///     code_location_text_color: Some(color::r#type::TextColor::Blue),
+///     code_location_bg_color: Some(color::r#type::BgColor::Red),
+///     split: Some(" => "),
+///     split_color: Some(color::r#type::TextColor::Cyan),
+///     split_bg_color: Some(color::r#type::BgColor::Red),
+///     ..Default::default()
+/// });
+/// ```
+///
+/// ## 构造器输出
+///
+/// ```rust
+/// output(
+///     OutputBuilder::new()
+///         .set_text("test_output_builder")
+///         .set_text_color(color::r#type::TextColor::Cyan)
+///         .set_time_text_color(color::r#type::TextColor::Blue)
+///         .set_code_location_text_color(color::r#type::TextColor::Red)
+///         .set_text_blod(true)
+///         .set_time_text_blod(true)
+///         .set_code_location_text_blod(true)
+///         .set_show_time(true)
+///         .set_show_code_location(true)
+///         .build(),
+/// );
+/// ````
+pub fn output(output: Output) {
     /// 文字
     let text: &str = output.text.clone();
     let text_color: TextColor = output.text_color.clone().unwrap_or_default();
