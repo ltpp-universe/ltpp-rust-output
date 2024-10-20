@@ -1,0 +1,7 @@
+[package]
+name = "ltpp-output"
+version = "0.1.0"
+edition = "2021"
+authors = ["ltpp-universe <root@ltpp.vip>"] 
+license = "MIT"
+repository = ""
