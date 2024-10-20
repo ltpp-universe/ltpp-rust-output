@@ -1,13 +1,13 @@
-/// 输出宏
+/// Output macro
 ///
-/// [官方文档](https://docs.ltpp.vip/LTPP-RUST-OUTPUT/)
+/// [Official Documentation](https://docs.ltpp.vip/LTPP-RUST-OUTPUT/)
 ///
-/// # 参数
-/// - Output: 输出结构体
+/// # Parameters
+/// - Output: The output struct
 ///
-/// # 代码示例
+/// # Code Example
 ///
-/// ## 使用结构体
+/// ## Using the Struct
 ///
 /// ```rust
 /// use ltpp_output::*;
@@ -28,7 +28,7 @@
 /// });
 /// ```
 ///
-/// ## 使用构造器
+/// ## Using the Constructor
 ///
 /// ```rust
 /// use ltpp_output::*;
@@ -45,7 +45,7 @@
 ///     .build());
 /// ```
 ///
-/// ## 多个传入
+/// ## Multiple Inputs
 ///
 /// ```rust
 /// use ltpp_output::*;

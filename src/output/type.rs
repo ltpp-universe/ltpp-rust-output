@@ -1,15 +1,15 @@
 use super::output::output;
 use crate::*;
 
-/// 输出结构体
+/// Output struct
 ///
-/// [官方文档](https://docs.ltpp.vip/LTPP-RUST-OUTPUT/)
+/// [Official Documentation](https://docs.ltpp.vip/LTPP-RUST-OUTPUT/)
 ///
-/// # 代码示例
+/// # Code Example
 ///
-/// ## 使用结构体
+/// ## Using the Struct
 ///
-/// ### 使用 output 函数
+/// ### Using the output Function
 ///
 /// ```rust
 /// use ltpp_output::*;
@@ -30,7 +30,7 @@ use crate::*;
 /// });
 /// ```
 ///
-/// ### 使用 output 方法
+/// ### Using the output Method
 ///
 /// ```rust
 /// use ltpp_output::*;
@@ -52,9 +52,9 @@ use crate::*;
 /// .output();
 /// ```
 ///
-/// ## 使用构造器
+/// ## Using the Constructor
 ///
-/// ### 使用 output 函数
+/// ### Using the output Function
 ///
 /// ```rust
 /// use ltpp_output::*;
@@ -73,7 +73,7 @@ use crate::*;
 /// );
 /// ```
 ///
-/// ### 使用 output 方法
+/// ### Using the output Method
 ///
 /// ```rust
 /// use ltpp_output::*;
@@ -93,37 +93,37 @@ use crate::*;
 /// ```
 #[derive(Debug, Clone)]
 pub struct Output<'a> {
-    /// 输出文字
+    /// text
     pub text: &'a str,
-    /// 输出文字颜色
+    /// text color
     pub text_color: Option<ColorType>,
-    /// 输出文字背景颜色
+    /// Text background color
     pub text_bg_color: Option<ColorType>,
-    /// 文字加粗
+    /// Bold text
     pub text_blod: Option<bool>,
-    /// 是否显示时间
+    /// Whether to show time
     pub show_time: Option<bool>,
-    /// 时间文字颜色
+    /// Time text color
     pub time_text_color: Option<ColorType>,
-    /// 时间背景颜色
+    /// Time background color
     pub time_bg_color: Option<ColorType>,
-    /// 时间文字加粗
+    /// Time text bold
     pub time_text_blod: Option<bool>,
-    /// 是否显示代码位置
+    /// Whether to show code location
     pub show_code_location: Option<bool>,
-    /// 代码位置文字颜色
+    /// Code location text color
     pub code_location_text_color: Option<ColorType>,
-    /// 代码位置背景颜色
+    /// Code location background color
     pub code_location_bg_color: Option<ColorType>,
-    /// 代码位置文字加粗
+    /// Code location text bold
     pub code_location_text_blod: Option<bool>,
-    /// 分隔符
+    /// Separator
     pub split: Option<&'a str>,
-    /// 分隔符文字颜色
+    /// Separator text color
     pub split_color: Option<ColorType>,
-    /// 分隔符背景颜色
+    /// Separator background color
     pub split_bg_color: Option<ColorType>,
-    /// 分隔符文字加粗
+    /// Separator text bold
     pub split_text_blod: Option<bool>,
 }
 
@@ -161,57 +161,131 @@ pub struct OutputBuilder<'a> {
 }
 
 impl<'a> OutputBuilder<'a> {
+    /// Creates the struct
+    ///
+    /// # Returns
+    /// - `Self`: Output
     pub fn new() -> Self {
         Self {
             output: Output::default(),
         }
     }
 
+    /// Sets the text.
+    ///
+    /// # Parameters
+    /// - `text`: The text to be set.
+    ///
+    /// # Returns
+    /// - `&mut Self`: A mutable reference to the struct for method chaining.
     pub fn set_text(&mut self, text: &'a str) -> &mut Self {
         self.output.text = text;
         self
     }
 
+    /// Sets the text color.
+    ///
+    /// # Parameters
+    /// - `text_color`: The color to be set for the text.
+    ///
+    /// # Returns
+    /// - `&mut Self`: A mutable reference to the struct for method chaining.
     pub fn set_text_color(&mut self, text_color: ColorType) -> &mut Self {
         self.output.text_color = Some(text_color);
         self
     }
 
+    /// Sets the background color for the text.
+    ///
+    /// # Parameters
+    /// - `text_bg_color`: The background color to be set for the text.
+    ///
+    /// # Returns
+    /// - `&mut Self`: A mutable reference to the struct for method chaining.
     pub fn set_text_bg_color(&mut self, text_bg_color: ColorType) -> &mut Self {
         self.output.text_bg_color = Some(text_bg_color);
         self
     }
 
+    /// Sets whether the text should be bold.
+    ///
+    /// # Parameters
+    /// - `text_blod`: A boolean indicating whether the text should be bold.
+    ///
+    /// # Returns
+    /// - `&mut Self`: A mutable reference to the struct for method chaining.
     pub fn set_text_blod(&mut self, text_blod: bool) -> &mut Self {
         self.output.text_blod = Some(text_blod);
         self
     }
 
+    /// Sets whether to show the time.
+    ///
+    /// # Parameters
+    /// - `show_time`: A boolean indicating whether to display the time.
+    ///
+    /// # Returns
+    /// - `&mut Self`: A mutable reference to the struct for method chaining.
     pub fn set_show_time(&mut self, show_time: bool) -> &mut Self {
         self.output.show_time = Some(show_time);
         self
     }
 
+    /// Sets the time text color.
+    ///
+    /// # Parameters
+    /// - `time_text_color`: The color to be set for the time text.
+    ///
+    /// # Returns
+    /// - `&mut Self`: A mutable reference to the struct for method chaining.
     pub fn set_time_text_color(&mut self, time_text_color: ColorType) -> &mut Self {
         self.output.time_text_color = Some(time_text_color);
         self
     }
 
+    /// Sets the background color for the time text.
+    ///
+    /// # Parameters
+    /// - `time_bg_color`: The background color to be set for the time text.
+    ///
+    /// # Returns
+    /// - `&mut Self`: A mutable reference to the struct for method chaining.
     pub fn set_time_bg_color(&mut self, time_bg_color: ColorType) -> &mut Self {
         self.output.time_bg_color = Some(time_bg_color);
         self
     }
 
+    /// Sets whether the time text should be bold.
+    ///
+    /// # Parameters
+    /// - `time_text_blod`: A boolean indicating whether the time text should be bold.
+    ///
+    /// # Returns
+    /// - `&mut Self`: A mutable reference to the struct for method chaining.
     pub fn set_time_text_blod(&mut self, time_text_blod: bool) -> &mut Self {
         self.output.time_text_blod = Some(time_text_blod);
         self
     }
 
+    /// Sets whether to show the code location.
+    ///
+    /// # Parameters
+    /// - `show_code_location`: A boolean indicating whether to display the code location.
+    ///
+    /// # Returns
+    /// - `&mut Self`: A mutable reference to the struct for method chaining.
     pub fn set_show_code_location(&mut self, show_code_location: bool) -> &mut Self {
         self.output.show_code_location = Some(show_code_location);
         self
     }
 
+    /// Sets the code location text color.
+    ///
+    /// # Parameters
+    /// - `code_location_text_color`: The color to be set for the code location text.
+    ///
+    /// # Returns
+    /// - `&mut Self`: A mutable reference to the struct for method chaining.
     pub fn set_code_location_text_color(
         &mut self,
         code_location_text_color: ColorType,
@@ -220,40 +294,90 @@ impl<'a> OutputBuilder<'a> {
         self
     }
 
+    /// Sets the background color for the code location text.
+    ///
+    /// # Parameters
+    /// - `code_location_bg_color`: The background color to be set for the code location text.
+    ///
+    /// # Returns
+    /// - `&mut Self`: A mutable reference to the struct for method chaining.
     pub fn set_code_location_bg_color(&mut self, code_location_bg_color: ColorType) -> &mut Self {
         self.output.code_location_bg_color = Some(code_location_bg_color);
         self
     }
 
+    /// Sets whether the code location text should be bold.
+    ///
+    /// # Parameters
+    /// - `code_location_text_blod`: A boolean indicating whether the code location text should be bold.
+    ///
+    /// # Returns
+    /// - `&mut Self`: A mutable reference to the struct for method chaining.
     pub fn set_code_location_text_blod(&mut self, code_location_text_blod: bool) -> &mut Self {
         self.output.code_location_text_blod = Some(code_location_text_blod);
         self
     }
 
+    /// Sets the separator.
+    ///
+    /// # Parameters
+    /// - `split`: The separator string to be set.
+    ///
+    /// # Returns
+    /// - `&mut Self`: A mutable reference to the struct for method chaining.
     pub fn set_split(&mut self, split: &'a str) -> &mut Self {
         self.output.split = Some(split);
         self
     }
 
+    /// Sets the separator color.
+    ///
+    /// # Parameters
+    /// - `split_color`: The color to be set for the separator.
+    ///
+    /// # Returns
+    /// - `&mut Self`: A mutable reference to the struct for method chaining.
     pub fn set_split_color(&mut self, split_color: ColorType) -> &mut Self {
         self.output.split_color = Some(split_color);
         self
     }
 
+    /// Sets the background color for the separator.
+    ///
+    /// # Parameters
+    /// - `split_bg_color`: The background color to be set for the separator.
+    ///
+    /// # Returns
+    /// - `&mut Self`: A mutable reference to the struct for method chaining.
     pub fn set_split_bg_color(&mut self, split_bg_color: ColorType) -> &mut Self {
         self.output.split_bg_color = Some(split_bg_color);
         self
     }
 
+    /// Sets whether the separator text should be bold.
+    ///
+    /// # Parameters
+    /// - `split_text_blod`: A boolean indicating whether the separator text should be bold.
+    ///
+    /// # Returns
+    /// - `&mut Self`: A mutable reference to the struct for method chaining.
     pub fn set_split_text_blod(&mut self, split_text_blod: bool) -> &mut Self {
         self.output.split_text_blod = Some(split_text_blod);
         self
     }
 
+    /// Builds and returns the Output struct.
+    ///
+    /// # Returns
+    /// - `Output`: The constructed Output struct.
     pub fn build(&self) -> Output {
         self.output.clone()
     }
 
+    /// Outputs the current state of the Output struct.
+    ///
+    /// # Returns
+    /// - `()` : Nothing is returned.
     pub fn output(&self) {
         output(self.output.clone());
     }

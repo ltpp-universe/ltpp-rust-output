@@ -1,20 +1,20 @@
 use crate::text::r#type::Text;
-use crate::time::time::get_now_time;
+use crate::time::time::get_now_time_format;
 use crate::*;
 use std::{borrow::Cow, panic};
 
-/// 输出
+/// Output
 ///
-/// [官方文档](https://docs.ltpp.vip/LTPP-RUST-OUTPUT/)
+/// [Official Documentation](https://docs.ltpp.vip/LTPP-RUST-OUTPUT/)
 ///
-/// # 参数
-/// - Output: 输出结构体
+/// # Parameters
+/// - Output: The output struct
 ///
-/// # 代码示例
+/// # Code Example
 ///
-/// ## 使用结构体
+/// ## Using the Struct
 ///
-/// ### 使用 output 函数
+/// ### Using the output Function
 ///
 /// ```rust
 /// use ltpp_output::*;
@@ -35,9 +35,9 @@ use std::{borrow::Cow, panic};
 /// });
 /// ```
 ///
-/// ## 使用构造器
+/// ## Using the Constructor
 ///
-/// ### 使用 output 函数
+/// ### Using the output Function
 ///
 /// ```rust
 /// use ltpp_output::*;
@@ -56,24 +56,24 @@ use std::{borrow::Cow, panic};
 /// );
 /// ```
 pub fn output(output: Output) {
-    /// 文字
+    /// Text
     let text: &str = output.text.clone();
     let text_color: ColorType = output.text_color.clone().unwrap_or_default();
     let text_bg_color: ColorType = output.text_bg_color.clone().unwrap_or_default();
     let text_blod: bool = output.text_blod.clone().unwrap_or_default();
-    /// 时间
+    /// Time
     let show_time: bool = output.show_time.clone().unwrap_or_default();
     let time_color: ColorType = output.time_text_color.clone().unwrap_or_default();
     let time_bg_color: ColorType = output.time_bg_color.clone().unwrap_or_default();
     let time_text_blod: bool = output.time_text_blod.clone().unwrap_or_default();
-    /// 代码位置
+    /// Code Location
     let show_code_location: bool = output.show_code_location.clone().unwrap_or_default();
     let code_location_color: ColorType =
         output.code_location_text_color.clone().unwrap_or_default();
     let code_location_bg_color: ColorType =
         output.code_location_bg_color.clone().unwrap_or_default();
     let code_location_text_blod: bool = output.time_text_blod.clone().unwrap_or_default();
-    /// 分隔符
+    /// Separator
     let split: &str = output.split.clone().unwrap_or_default();
     let split_color: ColorType = output.split_color.clone().unwrap_or_default();
     let split_bg_color: ColorType = output.split_bg_color.clone().unwrap_or_default();
@@ -81,9 +81,9 @@ pub fn output(output: Output) {
 
     let mut output: String = String::new();
 
-    // 添加时间
+    // Add time
     if show_time {
-        let time_str: &String = &format!("[{}]", get_now_time());
+        let time_str: &String = &format!("[{}]", get_now_time_format());
         let colored_time: &Cow<'_, str> = &Text {
             text: time_str,
             text_color: time_color,
@@ -94,7 +94,7 @@ pub fn output(output: Output) {
         output.push_str(colored_time);
     }
 
-    // 添加代码位置
+    // Add code location
     if show_code_location {
         let location: &panic::Location<'_> = panic::Location::caller();
         let code_location_str: &String = &format!("({}:{})", location.file(), location.line());
@@ -108,7 +108,7 @@ pub fn output(output: Output) {
         output.push_str(colored_time);
     }
 
-    /// 添加分隔符
+    /// Add separator
     let colored_time: &Cow<'_, str> = &Text {
         text: split,
         text_color: split_color,
@@ -118,7 +118,7 @@ pub fn output(output: Output) {
     .get_display_str_cow();
     output.push_str(colored_time);
 
-    /// 添加文字
+    /// Add text
     let colored_text: &Cow<'_, str> = &Text {
         text,
         text_color,

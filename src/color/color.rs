@@ -1,3 +1,4 @@
+/// ANSI escape sequences for text formatting.
 pub const DEFAULT: &str = "\x1b[0m";
 pub const BLACK: &str = "\x1b[30m";
 pub const RED: &str = "\x1b[31m";
@@ -8,6 +9,7 @@ pub const MAGENTA: &str = "\x1b[35m";
 pub const CYAN: &str = "\x1b[36m";
 pub const WHITE: &str = "\x1b[37m";
 
+/// ANSI escape sequences for background formatting.
 pub const BG_BLACK: &str = "\x1b[40m";
 pub const BG_RED: &str = "\x1b[41m";
 pub const BG_GREEN: &str = "\x1b[42m";

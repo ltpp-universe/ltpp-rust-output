@@ -12,46 +12,66 @@ use std::{
 
 use super::utils::{color256_bg_color, color256_fg_color, rgb_bg_color, rgb_fg_color};
 
+/// ColorType
 #[derive(Debug, Clone, PartialEq)]
 pub enum ColorType {
-    /// RGB颜色(r, g, b)
+    /// RGB Color (r, g, b)
     Rgb(u8, u8, u8),
-    /// 颜色256
+    /// Color 256
     Color256(u32),
-    /// 内置颜色
+    /// Built-in Colors
     Use(Color),
 }
 
+/// Display Type
 #[derive(Debug, Clone, PartialEq)]
 pub(crate) enum DisplayType {
+    /// Text
     Text,
+    /// Background
     Background,
 }
 
+/// Color
 #[derive(Debug, Clone, PartialEq)]
 pub enum Color {
-    /// 默认颜色，通常用于恢复终端的默认设置
+    /// Default Color
     Default,
-    /// 黑色
+    /// Black
     Black,
-    /// 红色
+    /// Red
     Red,
-    /// 绿色
+    /// Green
     Green,
-    /// 黄色
+    /// Yellow
     Yellow,
-    /// 蓝色
+    /// Blue
     Blue,
-    /// 品红色
+    /// Magenta
     Magenta,
-    /// 青色
+    /// Cyan
     Cyan,
-    /// 白色
+    /// White
     White,
 }
 
 pub(crate) trait ColorDisplay {
-    fn get_str(&self, is_text_color: DisplayType) -> String;
+    /// Gets the display string
+    ///
+    /// # Parameters
+    /// - `&Self`: &self
+    /// - `DisplayType`: display_type
+    ///
+    /// # Returns
+    /// - `String`: The displayed string
+    fn get_str(&self, display_type: DisplayType) -> String;
+    /// Bold string
+    ///
+    /// # Parameters
+    /// - `&Self`: &self
+    ///
+    /// # Returns
+    /// - `String`: The bolded string
     fn blod(&self) -> String;
 }
 
@@ -62,8 +82,8 @@ impl Default for Color {
 }
 
 impl ColorDisplay for Color {
-    fn get_str(&self, is_text_color: DisplayType) -> String {
-        let str = match is_text_color {
+    fn get_str(&self, display_type: DisplayType) -> String {
+        let str: &str = match display_type {
             DisplayType::Text => match self {
                 Color::Red => RED,
                 Color::Green => GREEN,
@@ -108,17 +128,17 @@ impl Display for ColorType {
 }
 
 impl ColorDisplay for ColorType {
-    fn get_str(&self, is_text_color: DisplayType) -> String {
+    fn get_str(&self, display_type: DisplayType) -> String {
         match self {
-            ColorType::Color256(fg) => match is_text_color {
+            ColorType::Color256(fg) => match display_type {
                 DisplayType::Text => color256_fg_color(*fg),
                 DisplayType::Background => color256_bg_color(*fg),
             },
-            ColorType::Rgb(r, g, b) => match is_text_color {
+            ColorType::Rgb(r, g, b) => match display_type {
                 DisplayType::Text => rgb_fg_color(*r, *g, *b),
                 DisplayType::Background => rgb_bg_color(*r, *g, *b),
             },
-            ColorType::Use(color) => color.get_str(is_text_color.clone()),
+            ColorType::Use(color) => color.get_str(display_type.clone()),
         }
     }
     fn blod(&self) -> String {

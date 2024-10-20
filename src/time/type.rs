@@ -1,24 +1,42 @@
 use std::{env, fmt, str::FromStr};
 
+/// Represents supported languages.
 #[derive(Debug, Clone, PartialEq)]
 pub enum Lang {
-    EnUsUtf8, // 英语 (美国)
-    ZhCnUtf8, // 中文 (中国)
-    FrFrUtf8, // 法语 (法国)
-    DeDeUtf8, // 德语 (德国)
-    EsEsUtf8, // 西班牙语 (西班牙)
-    ItItUtf8, // 意大利语 (意大利)
-    JaJpUtf8, // 日语 (日本)
-    KoKrUtf8, // 韩语 (韩国)
-    PtPtUtf8, // 葡萄牙语 (葡萄牙)
-    RuRuUtf8, // 俄语 (俄罗斯)
-    ArSaUtf8, // 阿拉伯语 (沙特阿拉伯)
-    HiInUtf8, // 印地语 (印度)
-    ThThUtf8, // 泰语 (泰国)
-    ViVnUtf8, // 越南语 (越南)
-    NlNlUtf8, // 荷兰语 (荷兰)
-    SvSeUtf8, // 瑞典语 (瑞典)
-    FiFiUtf8, // 芬兰语 (芬兰)
+    /// English (United States)
+    EnUsUtf8,
+    /// Chinese (China)
+    ZhCnUtf8,
+    /// French (France)
+    FrFrUtf8,
+    /// German (Germany)
+    DeDeUtf8,
+    /// Spanish (Spain)
+    EsEsUtf8,
+    /// Italian (Italy)
+    ItItUtf8,
+    /// Japanese (Japan)
+    JaJpUtf8,
+    /// Korean (South Korea)
+    KoKrUtf8,
+    /// Portuguese (Portugal)
+    PtPtUtf8,
+    /// Russian (Russia)
+    RuRuUtf8,
+    /// Arabic (Saudi Arabia)
+    ArSaUtf8,
+    /// Hindi (India)
+    HiInUtf8,
+    /// Thai (Thailand)
+    ThThUtf8,
+    /// Vietnamese (Vietnam)
+    ViVnUtf8,
+    /// Dutch (Netherlands)
+    NlNlUtf8,
+    /// Swedish (Sweden)
+    SvSeUtf8,
+    /// Finnish (Finland)
+    FiFiUtf8,
 }
 
 impl fmt::Display for Lang {
@@ -47,6 +65,20 @@ impl fmt::Display for Lang {
 }
 
 impl Lang {
+    /// Returns the UTC offset in seconds for the corresponding language.
+    ///
+    /// Each language is associated with a specific UTC offset,
+    /// indicating the difference from Coordinated Universal Time (UTC).
+    ///
+    /// # Returns
+    /// - `u64`: The UTC offset in seconds. For example,
+    ///   - `0` for UTC (English)
+    ///   - `28800` for UTC+8 (Chinese)
+    ///   - `3600` for UTC+1 (French, German, Spanish, etc.)
+    ///   - `32400` for UTC+9 (Japanese, Korean)
+    ///   - `10800` for UTC+3 (Russian, Arabic)
+    ///   - `19800` for UTC+5:30 (Hindi)
+    ///   - `25200` for UTC+7 (Thai, Vietnamese)
     pub fn value(&self) -> u64 {
         match self {
             Lang::EnUsUtf8 => 0,     // UTC
@@ -103,7 +135,14 @@ impl FromStr for Lang {
     }
 }
 
-/// 根据系统环境变量获取时区偏移量
+/// Gets the time zone offset from the system environment variable.
+///
+/// This function retrieves the `LANG` environment variable and attempts to
+/// parse it into a `Lang` value. If the variable is not set or cannot be
+/// parsed, it defaults to `Lang::EnUsUtf8`.
+///
+/// # Returns
+/// - `Lang`: The corresponding `Lang` value based on the `LANG` environment variable.
 pub fn from_env_var() -> Lang {
     let lang = env::var("LANG")
         .unwrap_or_default()

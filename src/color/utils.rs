@@ -1,47 +1,47 @@
-/// 生成 256 色前景色的 ANSI 转义序列
+/// Generates an ANSI escape sequence for foreground colors in 256 colors.
 ///
-/// # 参数
-/// - `code`: 颜色代码，范围是 0 到 255。
+/// # Parameters
+/// - `code`: The color code, which ranges from 0 to 255.
 ///
-/// # 返回值
-/// 返回一个包含前景色的 ANSI 转义序列的字符串。
+/// # Returns
+/// Returns a string containing the ANSI escape sequence for the foreground color.
 pub fn color256_fg_color(code: u32) -> String {
     format!("\x1b[38;5;{}m", code)
 }
 
-/// 生成 256 色背景色的 ANSI 转义序列
+/// Generates an ANSI escape sequence for background colors in 256 colors.
 ///
-/// # 参数
-/// - `code`: 颜色代码，范围是 0 到 255。
+/// # Parameters
+/// - `code`: The color code, which ranges from 0 to 255.
 ///
-/// # 返回值
-/// 返回一个包含背景色的 ANSI 转义序列的字符串。
+/// # Returns
+/// Returns a string containing the ANSI escape sequence for the background color.
 pub fn color256_bg_color(code: u32) -> String {
     format!("\x1b[48;5;{}m", code)
 }
 
-/// 生成真彩色前景色的 ANSI 转义序列
+/// Generates an ANSI escape sequence for true color foreground colors.
 ///
-/// # 参数
-/// - `r`: 红色分量，范围是 0 到 255。
-/// - `g`: 绿色分量，范围是 0 到 255。
-/// - `b`: 蓝色分量，范围是 0 到 255。
+/// # Parameters
+/// - `r`: The red component, which ranges from 0 to 255.
+/// - `g`: The green component, which ranges from 0 to 255.
+/// - `b`: The blue component, which ranges from 0 to 255.
 ///
-/// # 返回值
-/// 返回一个包含真彩色前景色的 ANSI 转义序列的字符串。
+/// # Returns
+/// Returns a string containing the ANSI escape sequence for the true color foreground color.
 pub fn rgb_fg_color(r: u8, g: u8, b: u8) -> String {
     format!("\x1b[38;2;{};{};{}m", r, g, b)
 }
 
-/// 生成真彩色背景色的 ANSI 转义序列
+/// Generates an ANSI escape sequence for true color background colors.
 ///
-/// # 参数
-/// - `r`: 红色分量，范围是 0 到 255。
-/// - `g`: 绿色分量，范围是 0 到 255。
-/// - `b`: 蓝色分量，范围是 0 到 255。
+/// # Parameters
+/// - `r`: The red component, which ranges from 0 to 255.
+/// - `g`: The green component, which ranges from 0 to 255.
+/// - `b`: The blue component, which ranges from 0 to 255.
 ///
-/// # 返回值
-/// 返回一个包含真彩色背景色的 ANSI 转义序列的字符串。
+/// # Returns
+/// Returns a string containing the ANSI escape sequence for the true color background color.
 pub fn rgb_bg_color(r: u8, g: u8, b: u8) -> String {
     format!("\x1b[48;2;{};{};{}m", r, g, b)
 }
