@@ -1,5 +1,7 @@
 use crate::color::r#type::{BgColor, TextColor};
 
+use super::output::colored_output;
+
 /// 输出结构体
 #[derive(Debug, Clone)]
 pub struct Output<'a> {
@@ -57,6 +59,12 @@ impl<'a> Default for Output<'a> {
             code_location_text_blod: Some(true),
             split_text_blod: Some(true),
         }
+    }
+}
+
+impl<'a> Output<'a> {
+    pub fn output(self) {
+        colored_output(self);
     }
 }
 
@@ -156,5 +164,9 @@ impl<'a> OutputBuilder<'a> {
 
     pub fn build(&self) -> Output {
         self.output.clone()
+    }
+
+    pub fn output(&self) {
+        colored_output(self.output.clone());
     }
 }
