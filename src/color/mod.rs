@@ -1,4 +1,4 @@
 pub(crate) mod blod;
 pub(crate) mod cfg;
-pub mod color;
+pub(crate) mod color;
 pub mod r#type;

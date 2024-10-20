@@ -1,3 +1,3 @@
 pub(crate) mod cfg;
-pub mod output;
+pub(crate) mod output;
 pub mod r#type;
