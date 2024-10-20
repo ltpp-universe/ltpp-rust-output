@@ -1,5 +1,5 @@
 use super::r#type::Output;
-use crate::color::r#type::{BgColor, ColorDisplay, TextColor};
+use crate::color::r#type::{Color, ColorDisplay};
 use crate::text::r#type::Text;
 use crate::{color::color::DEFAULT, time::time::get_now_time};
 use std::{borrow::Cow, panic};
@@ -7,39 +7,45 @@ use std::{borrow::Cow, panic};
 /// 输出
 ///
 /// # 参数
-/// `Output`: 输出结构体
+/// - Output: 输出结构体
 ///
 /// # 代码示例
 ///
-/// ## 结构体输出
+/// ## 使用结构体
+///
+/// ### 使用 output 函数
 ///
 /// ```rust
+/// use ltpp_output::*;
 /// output(Output {
 ///     text: "test_output_struct",
-///     text_color: Some(color::r#type::TextColor::Default),
-///     text_bg_color: Some(color::r#type::BgColor::Red),
+///     text_color: Some(Color::Default),
+///     text_bg_color: Some(Color::Red),
 ///     show_time: Some(true),
 ///     show_code_location: Some(true),
-///     time_text_color: Some(color::r#type::TextColor::Green),
-///     time_bg_color: Some(color::r#type::BgColor::Red),
-///     code_location_text_color: Some(color::r#type::TextColor::Blue),
-///     code_location_bg_color: Some(color::r#type::BgColor::Red),
+///     time_text_color: Some(Color::Green),
+///     time_bg_color: Some(Color::Red),
+///     code_location_text_color: Some(Color::Blue),
+///     code_location_bg_color: Some(Color::Red),
 ///     split: Some(" => "),
-///     split_color: Some(color::r#type::TextColor::Cyan),
-///     split_bg_color: Some(color::r#type::BgColor::Red),
+///     split_color: Some(Color::Cyan),
+///     split_bg_color: Some(Color::Red),
 ///     ..Default::default()
 /// });
 /// ```
 ///
-/// ## 构造器输出
+/// ## 使用构造器
+///
+/// ### 使用 output 函数
 ///
 /// ```rust
+/// use ltpp_output::*;
 /// output(
 ///     OutputBuilder::new()
 ///         .set_text("test_output_builder")
-///         .set_text_color(color::r#type::TextColor::Cyan)
-///         .set_time_text_color(color::r#type::TextColor::Blue)
-///         .set_code_location_text_color(color::r#type::TextColor::Red)
+///         .set_text_color(Color::Cyan)
+///         .set_time_text_color(Color::Blue)
+///         .set_code_location_text_color(Color::Red)
 ///         .set_text_blod(true)
 ///         .set_time_text_blod(true)
 ///         .set_code_location_text_blod(true)
@@ -47,28 +53,27 @@ use std::{borrow::Cow, panic};
 ///         .set_show_code_location(true)
 ///         .build(),
 /// );
-/// ````
+/// ```
 pub fn output(output: Output) {
     /// 文字
     let text: &str = output.text.clone();
-    let text_color: TextColor = output.text_color.clone().unwrap_or_default();
-    let text_bg_color: BgColor = output.text_bg_color.clone().unwrap_or_default();
+    let text_color: Color = output.text_color.clone().unwrap_or_default();
+    let text_bg_color: Color = output.text_bg_color.clone().unwrap_or_default();
     let text_blod: bool = output.text_blod.clone().unwrap_or_default();
     /// 时间
     let show_time: bool = output.show_time.clone().unwrap_or_default();
-    let time_color: TextColor = output.time_text_color.clone().unwrap_or_default();
-    let time_bg_color: BgColor = output.time_bg_color.clone().unwrap_or_default();
+    let time_color: Color = output.time_text_color.clone().unwrap_or_default();
+    let time_bg_color: Color = output.time_bg_color.clone().unwrap_or_default();
     let time_text_blod: bool = output.time_text_blod.clone().unwrap_or_default();
     /// 代码位置
     let show_code_location: bool = output.show_code_location.clone().unwrap_or_default();
-    let code_location_color: TextColor =
-        output.code_location_text_color.clone().unwrap_or_default();
-    let code_location_bg_color: BgColor = output.code_location_bg_color.clone().unwrap_or_default();
+    let code_location_color: Color = output.code_location_text_color.clone().unwrap_or_default();
+    let code_location_bg_color: Color = output.code_location_bg_color.clone().unwrap_or_default();
     let code_location_text_blod: bool = output.time_text_blod.clone().unwrap_or_default();
     /// 分隔符
     let split: &str = output.split.clone().unwrap_or_default();
-    let split_color: TextColor = output.split_color.clone().unwrap_or_default();
-    let split_bg_color: BgColor = output.split_bg_color.clone().unwrap_or_default();
+    let split_color: Color = output.split_color.clone().unwrap_or_default();
+    let split_bg_color: Color = output.split_bg_color.clone().unwrap_or_default();
     let split_text_blod: bool = output.time_text_blod.clone().unwrap_or_default();
 
     let mut output: String = String::new();

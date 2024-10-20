@@ -1,15 +1,18 @@
-use crate::color::{
-    blod,
-    color::DEFAULT,
-    r#type::{BgColor, ColorDisplay, TextColor},
+use crate::{
+    color::{
+        blod,
+        color::DEFAULT,
+        r#type::{Color, ColorDisplay},
+    },
+    ColorType,
 };
 use std::borrow::Cow;
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct Text<'a> {
     pub text: &'a str,
-    pub text_color: TextColor,
-    pub text_bg_color: BgColor,
+    pub text_color: Color,
+    pub text_bg_color: Color,
     pub blod: bool,
 }
 
@@ -17,8 +20,8 @@ impl<'a> Default for Text<'a> {
     fn default() -> Self {
         Text {
             text: "",
-            text_color: TextColor::default(),
-            text_bg_color: BgColor::default(),
+            text_color: Color::default(),
+            text_bg_color: Color::default(),
             blod: false,
         }
     }
@@ -33,7 +36,7 @@ impl<'a> Text<'a> {
         } else {
             self.text_color.to_string()
         };
-        let text_bg_color: BgColor = self.text_bg_color.clone();
+        let text_bg_color: &str = self.text_bg_color.get_str(ColorType::Background);
         let colored_text: String = format!("{}{}{}{}", text_bg_color, text_color, text, DEFAULT);
         Cow::Owned(colored_text)
     }
