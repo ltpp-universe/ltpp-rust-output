@@ -14,8 +14,11 @@ use super::utils::{color256_bg_color, color256_fg_color, rgb_bg_color, rgb_fg_co
 
 #[derive(Debug, Clone, PartialEq)]
 pub enum ColorType {
+    /// RGB颜色(r, g, b)
     Rgb(u8, u8, u8),
-    Color256(u8),
+    /// 颜色256
+    Color256(u32),
+    /// 内置颜色
     Use(Color),
 }
 
@@ -27,14 +30,23 @@ pub(crate) enum DisplayType {
 
 #[derive(Debug, Clone, PartialEq)]
 pub enum Color {
+    /// 默认颜色，通常用于恢复终端的默认设置
     Default,
+    /// 黑色
     Black,
+    /// 红色
     Red,
+    /// 绿色
     Green,
+    /// 黄色
     Yellow,
+    /// 蓝色
     Blue,
+    /// 品红色
     Magenta,
+    /// 青色
     Cyan,
+    /// 白色
     White,
 }
 

@@ -5,7 +5,7 @@
 ///
 /// # 返回值
 /// 返回一个包含前景色的 ANSI 转义序列的字符串。
-pub fn color256_fg_color(code: u8) -> String {
+pub fn color256_fg_color(code: u32) -> String {
     format!("\x1b[38;5;{}m", code)
 }
 
@@ -16,7 +16,7 @@ pub fn color256_fg_color(code: u8) -> String {
 ///
 /// # 返回值
 /// 返回一个包含背景色的 ANSI 转义序列的字符串。
-pub fn color256_bg_color(code: u8) -> String {
+pub fn color256_bg_color(code: u32) -> String {
     format!("\x1b[48;5;{}m", code)
 }
 

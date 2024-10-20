@@ -1,5 +1,9 @@
 use crate::*;
-use color::{blod::BLOD, color::DEFAULT};
+use color::{
+    blod::BLOD,
+    color::DEFAULT,
+    utils::{color256_bg_color, color256_fg_color, rgb_bg_color, rgb_fg_color},
+};
 
 #[test]
 fn test_text_color() {
@@ -41,4 +45,32 @@ fn test_bg_color_blod() {
     let bg_color_str: String = Color::Default.blod();
     let ans_bg_color_str: String = format!("{}{}", Color::Default, BLOD);
     assert_eq!(bg_color_str, ans_bg_color_str);
+}
+
+#[test]
+fn test_color256_fg_color() {
+    let color_str: String = color256_fg_color(0xffffff);
+    let ans_color_str: String = "".to_string();
+    assert_eq!(color_str, ans_color_str);
+}
+
+#[test]
+fn test_color256_bg_color() {
+    let color_str: String = color256_bg_color(0x000000);
+    let ans_color_str: String = "".to_string();
+    assert_eq!(color_str, ans_color_str);
+}
+
+#[test]
+fn test_rgb_fg_color() {
+    let color_str: String = rgb_fg_color(255, 255, 255);
+    let ans_color_str: String = "".to_string();
+    assert_eq!(color_str, ans_color_str);
+}
+
+#[test]
+fn test_rgb_bg_color() {
+    let color_str: String = rgb_bg_color(0, 0, 0);
+    let ans_color_str: String = "".to_string();
+    assert_eq!(color_str, ans_color_str);
 }
