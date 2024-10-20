@@ -4,4 +4,5 @@ version = "0.1.0"
 edition = "2021"
 authors = ["ltpp-universe <root@ltpp.vip>"] 
 license = "MIT"
+description = "A Rust based output library that supports various output functions such as functions and constructors, and supports customizing text and background colors."
 repository = "https://github.com/ltpp-universe/ltpp-rust-output"
