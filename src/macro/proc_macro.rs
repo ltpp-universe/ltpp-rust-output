@@ -3,7 +3,7 @@
 /// [Official Documentation](https://docs.ltpp.vip/LTPP-RUST-OUTPUT/)
 ///
 /// # Parameters
-/// - Output: The output struct
+/// - `Output`: The output struct
 ///
 /// # Code Example
 ///
