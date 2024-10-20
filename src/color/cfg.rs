@@ -1,3 +1,5 @@
+use std::fmt::format;
+
 use crate::*;
 use color::{
     blod::BLOD,
@@ -50,27 +52,27 @@ fn test_bg_color_blod() {
 #[test]
 fn test_color256_fg_color() {
     let color_str: String = color256_fg_color(0xffffff);
-    let ans_color_str: String = "".to_string();
+    let ans_color_str: String = format!("\x1b[38;5;{}m", 0xffffff);
     assert_eq!(color_str, ans_color_str);
 }
 
 #[test]
 fn test_color256_bg_color() {
     let color_str: String = color256_bg_color(0x000000);
-    let ans_color_str: String = "".to_string();
+    let ans_color_str: String = format!("\x1b[48;5;{}m", 0x000000);
     assert_eq!(color_str, ans_color_str);
 }
 
 #[test]
 fn test_rgb_fg_color() {
     let color_str: String = rgb_fg_color(255, 255, 255);
-    let ans_color_str: String = "".to_string();
+    let ans_color_str: String = format!("\x1b[38;2;{};{};{}m", 255, 255, 255);
     assert_eq!(color_str, ans_color_str);
 }
 
 #[test]
 fn test_rgb_bg_color() {
     let color_str: String = rgb_bg_color(0, 0, 0);
-    let ans_color_str: String = "".to_string();
+    let ans_color_str: String = format!("\x1b[48;2;{};{};{}m", 0, 0, 0);
     assert_eq!(color_str, ans_color_str);
 }
