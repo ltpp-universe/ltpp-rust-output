@@ -12,6 +12,7 @@ fn test_proc_macro_output_struct() {
         split: " => ",
         split_color: ColorType::Use(Color::Cyan),
         split_bg_color: ColorType::Use(Color::Yellow),
+        endl: true,
         ..Default::default()
     });
 }
@@ -25,6 +26,7 @@ fn test_proc_mcacro_output_builder() {
         .set_text_blod(true)
         .set_time_text_blod(true)
         .set_show_time(true)
+        .set_endl(true)
         .build());
 }
 
@@ -41,6 +43,7 @@ fn test_proc_macro_multiple() {
             split: " => ",
             split_color: ColorType::Use(Color::Cyan),
             split_bg_color: ColorType::Use(Color::Yellow),
+            endl: true,
             ..Default::default()
         },
         OutputBuilder::new()
@@ -50,6 +53,7 @@ fn test_proc_macro_multiple() {
             .set_text_blod(true)
             .set_time_text_blod(true)
             .set_show_time(true)
+            .set_endl(true)
             .build(),
         OutputBuilder::new()
             .set_text("test_output_builder2")
@@ -58,6 +62,7 @@ fn test_proc_macro_multiple() {
             .set_text_blod(true)
             .set_time_text_blod(true)
             .set_show_time(true)
+            .set_endl(true)
             .build()
     );
 }

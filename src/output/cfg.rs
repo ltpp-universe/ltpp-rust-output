@@ -11,6 +11,7 @@ fn test_output_struct_function() {
         split: " => ",
         split_color: ColorType::Use(Color::Cyan),
         split_bg_color: ColorType::Use(Color::Yellow),
+        endl: true,
         ..Default::default()
     });
 }
@@ -27,6 +28,7 @@ fn test_output_struct_output_method() {
         split: " => ",
         split_color: ColorType::Use(Color::Cyan),
         split_bg_color: ColorType::Use(Color::Yellow),
+        endl: true,
         ..Default::default()
     }
     .output();

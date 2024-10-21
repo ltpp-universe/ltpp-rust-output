@@ -36,7 +36,7 @@ use crate::Output;
 ///         split: " => ",
 ///         split_color: ColorType::Use(Color::Cyan),
 ///         split_bg_color: ColorType::Use(Color::Yellow),
-///         endl: false,
+///         endl: true,
 ///         ..Default::default()
 ///     },
 /// ])

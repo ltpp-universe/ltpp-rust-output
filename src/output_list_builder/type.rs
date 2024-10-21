@@ -11,17 +11,31 @@ use crate::Output;
 /// ```rust
 /// use ltpp_output::*;
 /// OutputListBuilder::new_from(vec![Output::default()])
-///     .add(Output::default())
+///     .add(
+///         OutputBuilder::new()
+///             .set_text("text")
+///             .set_text_bg_color(ColorType::Use(Color::Blue))
+///             .set_endl(false)
+///             .build(),
+///     )
 ///     .add(Output {
-///         text: "test_new_from_output_list_builder",
+///         text: "test_new_from_output_list_builder_1",
 ///         text_color: ColorType::Use(Color::Default),
-///         text_bg_color: ColorType::Color256(0x000000),
-///         show_time: true,
-///         time_text_color: ColorType::Rgb(255, 255, 255),
-///         time_bg_color: ColorType::Use(Color::Yellow),
+///         text_bg_color: ColorType::Color256(0x3f3f3f),
 ///         split: " => ",
 ///         split_color: ColorType::Use(Color::Cyan),
 ///         split_bg_color: ColorType::Use(Color::Yellow),
+///         endl: false,
+///         ..Default::default()
+///     })
+///     .add(Output {
+///         text: "test_new_from_output_list_builder_2",
+///         text_color: ColorType::Use(Color::Default),
+///         text_bg_color: ColorType::Use(Color::Cyan),
+///         split: " => ",
+///         split_color: ColorType::Use(Color::Cyan),
+///         split_bg_color: ColorType::Use(Color::Yellow),
+///         endl: true,
 ///         ..Default::default()
 ///     })
 ///     .run();

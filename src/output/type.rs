@@ -12,6 +12,7 @@ use crate::*;
 /// ### Using the output Function
 ///
 /// ```rust
+/// use ltpp_output::*;
 /// output(Output {
 ///     text: "test_output_struct",
 ///     text_color: ColorType::Use(Color::Default),
@@ -22,6 +23,7 @@ use crate::*;
 ///     split: " => ",
 ///     split_color: ColorType::Use(Color::Cyan),
 ///     split_bg_color: ColorType::Use(Color::Yellow),
+///     endl: true,
 ///     ..Default::default()
 /// });
 /// ```
@@ -40,6 +42,7 @@ use crate::*;
 ///     split: " => ",
 ///     split_color: ColorType::Use(Color::Cyan),
 ///     split_bg_color: ColorType::Use(Color::Yellow),
+///     endl: true,
 ///     ..Default::default()
 /// }
 /// .output();

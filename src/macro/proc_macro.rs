@@ -21,6 +21,7 @@
 ///     split: " => ",
 ///     split_color: ColorType::Use(Color::Cyan),
 ///     split_bg_color: ColorType::Use(Color::Yellow),
+///     endl: true,
 ///     ..Default::default()
 /// });
 /// ```
@@ -36,6 +37,7 @@
 ///     .set_text_blod(true)
 ///     .set_time_text_blod(true)
 ///     .set_show_time(true)
+///     .set_endl(true)
 ///     .build());
 /// ```
 ///
@@ -54,6 +56,7 @@
 ///         split: " => ",
 ///         split_color: ColorType::Use(Color::Cyan),
 ///         split_bg_color: ColorType::Use(Color::Yellow),
+///         endl: true,
 ///         ..Default::default()
 ///     },
 ///     OutputBuilder::new()
@@ -63,6 +66,7 @@
 ///         .set_text_blod(true)
 ///         .set_time_text_blod(true)
 ///         .set_show_time(true)
+///         .set_endl(true)
 ///         .build(),
 ///     OutputBuilder::new()
 ///         .set_text("test_output_builder2")
@@ -71,6 +75,7 @@
 ///         .set_text_blod(true)
 ///         .set_time_text_blod(true)
 ///         .set_show_time(true)
+///         .set_endl(true)
 ///         .build()
 /// );
 /// ```

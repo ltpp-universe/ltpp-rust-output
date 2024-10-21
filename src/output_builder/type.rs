@@ -21,6 +21,7 @@ use crate::{output, ColorType, Output};
 ///         .set_text_blod(true)
 ///         .set_time_text_blod(true)
 ///         .set_show_time(true)
+///         .set_endl(true)
 ///         .build(),
 /// );
 /// ```
@@ -37,6 +38,7 @@ use crate::{output, ColorType, Output};
 ///     .set_text_blod(true)
 ///     .set_time_text_blod(true)
 ///     .set_show_time(true)
+///     .set_endl(true)
 ///     .build()
 ///     .output();
 /// ```

@@ -163,6 +163,18 @@ impl<'a> OutputBuilder<'a> {
         self
     }
 
+    /// Sets the `endl` value for the `Output`.
+    ///
+    /// # Parameters
+    /// - `endl`: A boolean value that determines whether to add a newline at the end.
+    ///
+    /// # Returns
+    /// - `&mut Self`: Returns a mutable reference to the current `Output` instance, allowing method chaining.
+    pub fn set_endl(&mut self, endl: bool) -> &mut Self {
+        self.output.endl = endl;
+        self
+    }
+
     /// Builds and returns the Output struct.
     ///
     /// # Returns

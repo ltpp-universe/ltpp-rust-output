@@ -43,7 +43,7 @@ fn test_color256_fg_color() {
 #[test]
 fn test_color256_bg_color() {
     let color_str: String = color256_bg_color(0x000000);
-    let ans_color_str: String = format!("\x1b[48;5;{}m", 0x000000);
+    let ans_color_str: String = format!("\x1b[48;5;{}m", 16);
     assert_eq!(color_str, ans_color_str);
 }
 

@@ -28,7 +28,7 @@ fn test_output_list_struct() {
             split: " => ",
             split_color: ColorType::Use(Color::Cyan),
             split_bg_color: ColorType::Use(Color::Yellow),
-            endl: false,
+            endl: true,
             ..Default::default()
         },
     ])
