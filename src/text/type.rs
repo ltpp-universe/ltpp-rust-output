@@ -1,6 +1,6 @@
 use crate::color::color::DEFAULT;
+use crate::DisplayType;
 use crate::*;
-use crate::{color::blod, DisplayType};
 use std::borrow::Cow;
 
 /// Represents a text with formatting options.
@@ -37,7 +37,7 @@ impl<'a> Text<'a> {
     /// # Returns
     /// - `Cow<'a, str>`: An owned copy of the formatted string.
     pub fn get_display_str_cow(&self) -> Cow<'a, str> {
-        let text: &str = self.text.clone();
+        let text: &str = self.text;
         let blod: bool = self.blod.clone();
         let text_color: String = if blod {
             self.text_color.blod()

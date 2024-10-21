@@ -5,10 +5,7 @@ use crate::color::{
         CYAN, DEFAULT, GREEN, MAGENTA, RED, WHITE, YELLOW,
     },
 };
-use std::{
-    borrow::Cow,
-    fmt::{self, Display},
-};
+use std::fmt::{self, Display};
 
 use super::utils::{color256_bg_color, color256_fg_color, rgb_bg_color, rgb_fg_color};
 

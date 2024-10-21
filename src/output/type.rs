@@ -18,11 +18,8 @@ use crate::*;
 ///     text_color: Some(ColorType::Use(Color::Default)),
 ///     text_bg_color: Some(ColorType::Color256(0x000000)),
 ///     show_time: Some(true),
-///     show_code_location: Some(true),
 ///     time_text_color: Some(ColorType::Rgb(255, 255, 255)),
 ///     time_bg_color: Some(ColorType::Use(Color::Yellow)),
-///     code_location_text_color: Some(ColorType::Color256(0xffffff)),
-///     code_location_bg_color: Some(ColorType::Use(Color::Yellow)),
 ///     split: Some(" => "),
 ///     split_color: Some(ColorType::Use(Color::Cyan)),
 ///     split_bg_color: Some(ColorType::Use(Color::Yellow)),
@@ -39,11 +36,8 @@ use crate::*;
 ///     text_color: Some(ColorType::Use(Color::Default)),
 ///     text_bg_color: Some(ColorType::Color256(0x000000)),
 ///     show_time: Some(true),
-///     show_code_location: Some(true),
 ///     time_text_color: Some(ColorType::Rgb(255, 255, 255)),
 ///     time_bg_color: Some(ColorType::Use(Color::Yellow)),
-///     code_location_text_color: Some(ColorType::Color256(0xffffff)),
-///     code_location_bg_color: Some(ColorType::Use(Color::Yellow)),
 ///     split: Some(" => "),
 ///     split_color: Some(ColorType::Use(Color::Cyan)),
 ///     split_bg_color: Some(ColorType::Use(Color::Yellow)),
@@ -63,12 +57,9 @@ use crate::*;
 ///         .set_text("test_output_builder")
 ///         .set_text_color(ColorType::Color256(0xffffff))
 ///         .set_time_text_color(ColorType::Rgb(255, 200, 255))
-///         .set_code_location_text_color(ColorType::Use(Color::Yellow))
 ///         .set_text_blod(true)
 ///         .set_time_text_blod(true)
-///         .set_code_location_text_blod(true)
 ///         .set_show_time(true)
-///         .set_show_code_location(true)
 ///         .build(),
 /// );
 /// ```
@@ -82,12 +73,9 @@ use crate::*;
 ///     .set_text("test_output_builder")
 ///     .set_text_color(ColorType::Color256(0xffffff))
 ///     .set_time_text_color(ColorType::Rgb(255, 200, 255))
-///     .set_code_location_text_color(ColorType::Use(Color::Yellow))
 ///     .set_text_blod(true)
 ///     .set_time_text_blod(true)
-///     .set_code_location_text_blod(true)
 ///     .set_show_time(true)
-///     .set_show_code_location(true)
 ///     .build()
 ///     .output();
 /// ```
@@ -109,14 +97,6 @@ pub struct Output<'a> {
     pub time_bg_color: Option<ColorType>,
     /// Time text bold
     pub time_text_blod: Option<bool>,
-    /// Whether to show code location
-    pub show_code_location: Option<bool>,
-    /// Code location text color
-    pub code_location_text_color: Option<ColorType>,
-    /// Code location background color
-    pub code_location_bg_color: Option<ColorType>,
-    /// Code location text bold
-    pub code_location_text_blod: Option<bool>,
     /// Separator
     pub split: Option<&'a str>,
     /// Separator text color
@@ -134,17 +114,13 @@ impl<'a> Default for Output<'a> {
             text_color: Some(ColorType::default()),
             text_bg_color: Some(ColorType::default()),
             show_time: Some(true),
-            show_code_location: Some(true),
             time_text_color: Some(ColorType::default()),
             time_bg_color: Some(ColorType::default()),
-            code_location_text_color: Some(ColorType::default()),
-            code_location_bg_color: Some(ColorType::default()),
             split: Some(""),
             split_color: Some(ColorType::default()),
             split_bg_color: Some(ColorType::default()),
             text_blod: Some(true),
             time_text_blod: Some(true),
-            code_location_text_blod: Some(true),
             split_text_blod: Some(true),
         }
     }
@@ -264,57 +240,6 @@ impl<'a> OutputBuilder<'a> {
     /// - `&mut Self`: A mutable reference to the struct for method chaining.
     pub fn set_time_text_blod(&mut self, time_text_blod: bool) -> &mut Self {
         self.output.time_text_blod = Some(time_text_blod);
-        self
-    }
-
-    /// Sets whether to show the code location.
-    ///
-    /// # Parameters
-    /// - `show_code_location`: A boolean indicating whether to display the code location.
-    ///
-    /// # Returns
-    /// - `&mut Self`: A mutable reference to the struct for method chaining.
-    pub fn set_show_code_location(&mut self, show_code_location: bool) -> &mut Self {
-        self.output.show_code_location = Some(show_code_location);
-        self
-    }
-
-    /// Sets the code location text color.
-    ///
-    /// # Parameters
-    /// - `code_location_text_color`: The color to be set for the code location text.
-    ///
-    /// # Returns
-    /// - `&mut Self`: A mutable reference to the struct for method chaining.
-    pub fn set_code_location_text_color(
-        &mut self,
-        code_location_text_color: ColorType,
-    ) -> &mut Self {
-        self.output.code_location_text_color = Some(code_location_text_color);
-        self
-    }
-
-    /// Sets the background color for the code location text.
-    ///
-    /// # Parameters
-    /// - `code_location_bg_color`: The background color to be set for the code location text.
-    ///
-    /// # Returns
-    /// - `&mut Self`: A mutable reference to the struct for method chaining.
-    pub fn set_code_location_bg_color(&mut self, code_location_bg_color: ColorType) -> &mut Self {
-        self.output.code_location_bg_color = Some(code_location_bg_color);
-        self
-    }
-
-    /// Sets whether the code location text should be bold.
-    ///
-    /// # Parameters
-    /// - `code_location_text_blod`: A boolean indicating whether the code location text should be bold.
-    ///
-    /// # Returns
-    /// - `&mut Self`: A mutable reference to the struct for method chaining.
-    pub fn set_code_location_text_blod(&mut self, code_location_text_blod: bool) -> &mut Self {
-        self.output.code_location_text_blod = Some(code_location_text_blod);
         self
     }
 

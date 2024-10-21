@@ -1,5 +1,3 @@
-use std::fmt::format;
-
 use crate::*;
 use color::{
     blod::BLOD,
