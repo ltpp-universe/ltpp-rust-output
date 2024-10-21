@@ -98,7 +98,6 @@ impl Lang {
             Lang::NlNlUtf8 => 3600,  // UTC+1
             Lang::SvSeUtf8 => 3600,  // UTC+1
             Lang::FiFiUtf8 => 3600,  // UTC+1
-            _ => 0,                  // 其他
         }
     }
 }
