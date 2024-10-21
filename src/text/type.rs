@@ -31,6 +31,17 @@ impl<'a> Default for Text<'a> {
 }
 
 impl<'a> Text<'a> {
+    /// 创建文本结构体
+    ///
+    /// # 参数
+    /// - `Text`: 文本结构体
+    ///
+    /// # 返回值
+    /// - `Text`: 文本结构体
+    pub fn new_from(text: &Text<'a>) -> Self {
+        Self { ..text.clone() }
+    }
+
     /// Gets the display string as a `Cow` (clone on write).
     ///
     /// This method generates a formatted string that represents the text with

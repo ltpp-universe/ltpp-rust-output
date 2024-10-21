@@ -1,3 +1,5 @@
+use task::r#type::Task;
+
 use crate::text::r#type::Text;
 use crate::time::time::get_now_time_format;
 use crate::*;
@@ -68,38 +70,37 @@ pub fn output(output: Output) {
 
     let mut output: String = String::new();
 
+    let mut task_list: Task<'_> = Task::new();
+
     // Add time
-    if show_time {
-        let time_str: &String = &format!("[{}]", get_now_time_format());
-        let colored_time: &Cow<'_, str> = &Text {
-            text: time_str,
-            text_color: time_color,
-            text_bg_color: time_bg_color,
-            blod: time_text_blod,
-        }
-        .get_display_str_cow();
-        output.push_str(colored_time);
-    }
+    let time_str: &String = if show_time {
+        &format!("[{}]", get_now_time_format())
+    } else {
+        &String::new()
+    };
+    task_list.add(Text {
+        text: time_str,
+        text_color: time_color,
+        text_bg_color: time_bg_color,
+        blod: time_text_blod,
+    });
 
     // Add separator
-    let colored_time: &Cow<'_, str> = &Text {
+    task_list.add(Text {
         text: split,
         text_color: split_color,
         text_bg_color: split_bg_color,
         blod: split_text_blod,
-    }
-    .get_display_str_cow();
-    output.push_str(colored_time);
+    });
 
     // Add text
-    let colored_text: &Cow<'_, str> = &Text {
+    task_list.add(Text {
         text,
         text_color,
         text_bg_color,
         blod: text_blod,
-    }
-    .get_display_str_cow();
-    output.push_str(colored_text);
+    });
 
-    println!("{}", output);
+    // run
+    task_list.run_all();
 }
