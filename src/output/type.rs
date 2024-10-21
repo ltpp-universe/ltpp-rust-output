@@ -127,6 +127,10 @@ impl<'a> Default for Output<'a> {
 }
 
 impl<'a> Output<'a> {
+    /// Outputs
+    ///
+    /// # Returns
+    /// - `()` : Nothing is returned.
     pub fn output(self) {
         output(self);
     }
