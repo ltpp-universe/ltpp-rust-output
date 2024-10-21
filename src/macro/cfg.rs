@@ -1,7 +1,7 @@
 use crate::*;
 
 #[test]
-fn test_proc_macro() {
+fn test_proc_macro_output_struct() {
     output_macro!(Output {
         text: "test_proc_macro",
         text_color: ColorType::default(),
@@ -14,7 +14,10 @@ fn test_proc_macro() {
         split_bg_color: ColorType::Use(Color::Yellow),
         ..Default::default()
     });
+}
 
+#[test]
+fn test_proc_mcacro_output_builder() {
     output_macro!(OutputBuilder::new()
         .set_text("test_output_builder")
         .set_text_color(ColorType::Use(Color::Cyan))
@@ -23,7 +26,10 @@ fn test_proc_macro() {
         .set_time_text_blod(true)
         .set_show_time(true)
         .build());
+}
 
+#[test]
+fn test_proc_macro_multiple() {
     output_macro!(
         Output {
             text: "test_proc_macro",
@@ -38,7 +44,15 @@ fn test_proc_macro() {
             ..Default::default()
         },
         OutputBuilder::new()
-            .set_text("test_output_builder")
+            .set_text("test_output_builder1")
+            .set_text_color(ColorType::Color256(0xffffff))
+            .set_time_text_color(ColorType::Rgb(255, 200, 255))
+            .set_text_blod(true)
+            .set_time_text_blod(true)
+            .set_show_time(true)
+            .build(),
+        OutputBuilder::new()
+            .set_text("test_output_builder2")
             .set_text_color(ColorType::Color256(0xffffff))
             .set_time_text_color(ColorType::Rgb(255, 200, 255))
             .set_text_blod(true)

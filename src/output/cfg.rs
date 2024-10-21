@@ -1,7 +1,6 @@
 use crate::*;
-
 #[test]
-fn test_output_struct() {
+fn test_output_struct_function() {
     output(Output {
         text: "test_output_struct",
         text_color: ColorType::Use(Color::Default),
@@ -14,7 +13,10 @@ fn test_output_struct() {
         split_bg_color: ColorType::Use(Color::Yellow),
         ..Default::default()
     });
+}
 
+#[test]
+fn test_output_struct_output_method() {
     Output {
         text: "test_output_struct_output",
         text_color: ColorType::Use(Color::Default),
