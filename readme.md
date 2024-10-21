@@ -9,7 +9,6 @@
 ## Features
 
 - Supports formatted time output
-- Supports code location output
 - Allows customization of text color, background color, text boldness, and other configurations
 - Supports defining structures for output information
 - Supports defining constructors for output information
