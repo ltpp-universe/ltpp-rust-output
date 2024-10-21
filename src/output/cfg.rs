@@ -18,7 +18,7 @@ fn test_output_struct() {
     Output {
         text: "test_output_struct_output",
         text_color: Some(ColorType::Use(Color::Default)),
-        text_bg_color: Some(ColorType::Color256(0x000000)),
+        text_bg_color: Some(ColorType::Use(Color::Blue)),
         show_time: Some(true),
         time_text_color: Some(ColorType::Rgb(255, 255, 255)),
         time_bg_color: Some(ColorType::Use(Color::Yellow)),
@@ -36,6 +36,8 @@ fn test_output_builder() {
         OutputBuilder::new()
             .set_text("test_output_builder")
             .set_text_color(ColorType::Color256(0xffffff))
+            .set_text_bg_color(ColorType::Color256(0xffffff))
+            .set_split_bg_color(ColorType::Color256(0xffffff))
             .set_time_text_color(ColorType::Rgb(255, 200, 255))
             .set_text_blod(true)
             .set_time_text_blod(true)
@@ -45,7 +47,7 @@ fn test_output_builder() {
 
     OutputBuilder::new()
         .set_text("test_output_builder_output")
-        .set_text("test_output_builder")
+        .set_text_bg_color(ColorType::Color256(0xffffff))
         .set_text_color(ColorType::Color256(0xffffff))
         .set_time_text_color(ColorType::Rgb(255, 200, 255))
         .set_text_blod(true)

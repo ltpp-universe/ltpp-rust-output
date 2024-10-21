@@ -41,7 +41,7 @@ pub enum Lang {
 
 impl fmt::Display for Lang {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        let lang_str = match self {
+        let lang_str: &str = match self {
             Lang::EnUsUtf8 => "English (US)",
             Lang::ZhCnUtf8 => "中文 (中国)",
             Lang::FrFrUtf8 => "Français (France)",
@@ -144,7 +144,7 @@ impl FromStr for Lang {
 /// # Returns
 /// - `Lang`: The corresponding `Lang` value based on the `LANG` environment variable.
 pub fn from_env_var() -> Lang {
-    let lang = env::var("LANG")
+    let lang: Lang = env::var("LANG")
         .unwrap_or_default()
         .parse::<Lang>()
         .unwrap_or_default();

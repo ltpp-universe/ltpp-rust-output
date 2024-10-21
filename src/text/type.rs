@@ -1,3 +1,5 @@
+use color::blod::{BLOD, UNBLOD};
+
 use crate::color::color::DEFAULT;
 use crate::DisplayType;
 use crate::*;
@@ -39,13 +41,16 @@ impl<'a> Text<'a> {
     pub fn get_display_str_cow(&self) -> Cow<'a, str> {
         let text: &str = self.text;
         let blod: bool = self.blod.clone();
-        let text_color: String = if blod {
-            self.text_color.blod()
-        } else {
-            self.text_color.to_string()
-        };
+        let text_color: &String = &self.text_color.to_string();
         let text_bg_color: &String = &self.text_bg_color.get_str(DisplayType::Background);
-        let colored_text: String = format!("{}{}{}{}", text_bg_color, text_color, text, DEFAULT);
+        let colored_text: String = if blod {
+            format!(
+                "{}{}{}{}{}{}",
+                text_bg_color, text_color, BLOD, text, UNBLOD, DEFAULT
+            )
+        } else {
+            format!("{}{}{}{}", text_bg_color, text_color, text, DEFAULT)
+        };
         Cow::Owned(colored_text)
     }
 }

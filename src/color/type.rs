@@ -1,5 +1,5 @@
 use crate::color::{
-    blod::BLOD,
+    blod::{BLOD, UNBLOD},
     color::{
         BG_BLACK, BG_BLUE, BG_CYAN, BG_GREEN, BG_MAGENTA, BG_RED, BG_WHITE, BG_YELLOW, BLACK, BLUE,
         CYAN, DEFAULT, GREEN, MAGENTA, RED, WHITE, YELLOW,
@@ -62,14 +62,6 @@ pub(crate) trait ColorDisplay {
     /// # Returns
     /// - `String`: The displayed string
     fn get_str(&self, display_type: DisplayType) -> String;
-    /// Bold string
-    ///
-    /// # Parameters
-    /// - `&Self`: &self
-    ///
-    /// # Returns
-    /// - `String`: The bolded string
-    fn blod(&self) -> String;
 }
 
 impl Default for Color {
@@ -92,7 +84,7 @@ impl ColorDisplay for Color {
                 Color::Magenta => MAGENTA,
                 Color::Cyan => CYAN,
             },
-            _ => match self {
+            DisplayType::Background => match self {
                 Color::Red => BG_RED,
                 Color::Green => BG_GREEN,
                 Color::Blue => BG_BLUE,
@@ -105,10 +97,6 @@ impl ColorDisplay for Color {
             },
         };
         str.to_string()
-    }
-
-    fn blod(&self) -> String {
-        format!("{}{}", self.to_string(), BLOD)
     }
 }
 
@@ -137,9 +125,6 @@ impl ColorDisplay for ColorType {
             },
             ColorType::Use(color) => color.get_str(display_type.clone()),
         }
-    }
-    fn blod(&self) -> String {
-        format!("{}{}", self.to_string(), BLOD)
     }
 }
 
