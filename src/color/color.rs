@@ -1,5 +1,7 @@
+/// Base
+pub const DEFAULT: &str = "";
+pub const RESET: &str = "\x1b[0m";
 /// ANSI escape sequences for text formatting.
-pub const DEFAULT: &str = "\x1b[0m";
 pub const BLACK: &str = "\x1b[30m";
 pub const RED: &str = "\x1b[31m";
 pub const GREEN: &str = "\x1b[32m";

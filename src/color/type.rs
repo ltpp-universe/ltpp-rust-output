@@ -7,7 +7,10 @@ use crate::color::{
 };
 use std::fmt::{self, Display};
 
-use super::utils::{color256_bg_color, color256_fg_color, rgb_bg_color, rgb_fg_color};
+use super::{
+    color::RESET,
+    utils::{color256_bg_color, color256_fg_color, rgb_bg_color, rgb_fg_color},
+};
 
 /// ColorType
 #[derive(Debug, Clone, PartialEq)]

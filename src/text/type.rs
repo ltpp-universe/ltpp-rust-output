@@ -1,4 +1,5 @@
 use color::blod::{BLOD, UNBLOD};
+use color::color::RESET;
 
 use crate::color::color::DEFAULT;
 use crate::DisplayType;
@@ -46,10 +47,10 @@ impl<'a> Text<'a> {
         let colored_text: String = if blod {
             format!(
                 "{}{}{}{}{}{}",
-                text_bg_color, text_color, BLOD, text, UNBLOD, DEFAULT
+                text_bg_color, text_color, BLOD, text, UNBLOD, RESET
             )
         } else {
-            format!("{}{}{}{}", text_bg_color, text_color, text, DEFAULT)
+            format!("{}{}{}{}", text_bg_color, text_color, text, RESET)
         };
         Cow::Owned(colored_text)
     }
