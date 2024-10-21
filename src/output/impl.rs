@@ -6,17 +6,18 @@ impl<'a> Default for Output<'a> {
     fn default() -> Self {
         Output {
             text: "",
-            text_color: Some(ColorType::default()),
-            text_bg_color: Some(ColorType::default()),
-            show_time: Some(false),
-            time_text_color: Some(ColorType::default()),
-            time_bg_color: Some(ColorType::default()),
-            split: Some(""),
-            split_color: Some(ColorType::default()),
-            split_bg_color: Some(ColorType::default()),
-            text_blod: Some(false),
-            time_text_blod: Some(false),
-            split_text_blod: Some(false),
+            text_color: ColorType::default(),
+            text_bg_color: ColorType::default(),
+            show_time: false,
+            time_text_color: ColorType::default(),
+            time_bg_color: ColorType::default(),
+            split: "",
+            split_color: ColorType::default(),
+            split_bg_color: ColorType::default(),
+            text_blod: false,
+            time_text_blod: false,
+            split_text_blod: false,
+            endl: false,
         }
     }
 }

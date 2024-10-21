@@ -15,7 +15,7 @@ use super::{
 /// ColorType
 #[derive(Debug, Clone, PartialEq)]
 pub enum ColorType {
-    /// RGB Color (r, g, b)
+    /// RGB Color (r, g, b),
     Rgb(u8, u8, u8),
     /// Color 256
     Color256(u32),

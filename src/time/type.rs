@@ -3,39 +3,39 @@ use std::{env, fmt, str::FromStr};
 /// Represents supported languages.
 #[derive(Debug, Clone, PartialEq)]
 pub enum Lang {
-    /// English (United States)
+    /// English (United States),
     EnUsUtf8,
-    /// Chinese (China)
+    /// Chinese (China),
     ZhCnUtf8,
-    /// French (France)
+    /// French (France),
     FrFrUtf8,
-    /// German (Germany)
+    /// German (Germany),
     DeDeUtf8,
-    /// Spanish (Spain)
+    /// Spanish (Spain),
     EsEsUtf8,
-    /// Italian (Italy)
+    /// Italian (Italy),
     ItItUtf8,
-    /// Japanese (Japan)
+    /// Japanese (Japan),
     JaJpUtf8,
-    /// Korean (South Korea)
+    /// Korean (South Korea),
     KoKrUtf8,
-    /// Portuguese (Portugal)
+    /// Portuguese (Portugal),
     PtPtUtf8,
-    /// Russian (Russia)
+    /// Russian (Russia),
     RuRuUtf8,
-    /// Arabic (Saudi Arabia)
+    /// Arabic (Saudi Arabia),
     ArSaUtf8,
-    /// Hindi (India)
+    /// Hindi (India),
     HiInUtf8,
-    /// Thai (Thailand)
+    /// Thai (Thailand),
     ThThUtf8,
-    /// Vietnamese (Vietnam)
+    /// Vietnamese (Vietnam),
     ViVnUtf8,
-    /// Dutch (Netherlands)
+    /// Dutch (Netherlands),
     NlNlUtf8,
-    /// Swedish (Sweden)
+    /// Swedish (Sweden),
     SvSeUtf8,
-    /// Finnish (Finland)
+    /// Finnish (Finland),
     FiFiUtf8,
 }
 
@@ -72,13 +72,13 @@ impl Lang {
     ///
     /// # Returns
     /// - `u64`: The UTC offset in seconds. For example,
-    ///   - `0` for UTC (English)
-    ///   - `28800` for UTC+8 (Chinese)
-    ///   - `3600` for UTC+1 (French, German, Spanish, etc.)
-    ///   - `32400` for UTC+9 (Japanese, Korean)
-    ///   - `10800` for UTC+3 (Russian, Arabic)
-    ///   - `19800` for UTC+5:30 (Hindi)
-    ///   - `25200` for UTC+7 (Thai, Vietnamese)
+    ///   - `0` for UTC (English),
+    ///   - `28800` for UTC+8 (Chinese),
+    ///   - `3600` for UTC+1 (French, German, Spanish, etc.),
+    ///   - `32400` for UTC+9 (Japanese, Korean),
+    ///   - `10800` for UTC+3 (Russian, Arabic),
+    ///   - `19800` for UTC+5:30 (Hindi),
+    ///   - `25200` for UTC+7 (Thai, Vietnamese),
     pub fn value(&self) -> u64 {
         match self {
             Lang::EnUsUtf8 => 0,     // UTC

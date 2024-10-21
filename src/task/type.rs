@@ -118,7 +118,7 @@ impl<'a> Task<'a> {
         match result {
             TaskResult::SuccessText(success_text) => {
                 let output_str: Cow<'_, str> = Text::new_from(&success_text).get_display_str_cow();
-                println!("{}", output_str);
+                print!("{}", output_str);
                 TaskResult::SuccessText(success_text)
             }
             _ => result,
@@ -157,7 +157,7 @@ impl<'a> Task<'a> {
             let colored_time: &Cow<'_, str> = &Text::new_from(&text).get_display_str_cow();
             output_str.push_str(colored_time);
         }
-        println!("{}", output_str);
+        print!("{}", output_str);
         self
     }
 }

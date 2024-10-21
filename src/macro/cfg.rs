@@ -4,14 +4,14 @@ use crate::*;
 fn test_proc_macro() {
     output_macro!(Output {
         text: "test_proc_macro",
-        text_color: Some(ColorType::default()),
-        text_bg_color: Some(ColorType::Use(Color::Yellow)),
-        show_time: Some(true),
-        time_text_color: Some(ColorType::Use(Color::Green)),
-        time_bg_color: Some(ColorType::Color256(0xffffff)),
-        split: Some(" => "),
-        split_color: Some(ColorType::Use(Color::Cyan)),
-        split_bg_color: Some(ColorType::Use(Color::Yellow)),
+        text_color: ColorType::default(),
+        text_bg_color: ColorType::Use(Color::Yellow),
+        show_time: true,
+        time_text_color: ColorType::Use(Color::Green),
+        time_bg_color: ColorType::Color256(0xffffff),
+        split: " => ",
+        split_color: ColorType::Use(Color::Cyan),
+        split_bg_color: ColorType::Use(Color::Yellow),
         ..Default::default()
     });
 
@@ -27,14 +27,14 @@ fn test_proc_macro() {
     output_macro!(
         Output {
             text: "test_proc_macro",
-            text_color: Some(ColorType::default()),
-            text_bg_color: Some(ColorType::Use(Color::Yellow)),
-            show_time: Some(true),
-            time_text_color: Some(ColorType::Use(Color::Green)),
-            time_bg_color: Some(ColorType::Color256(0xffffff)),
-            split: Some(" => "),
-            split_color: Some(ColorType::Use(Color::Cyan)),
-            split_bg_color: Some(ColorType::Use(Color::Yellow)),
+            text_color: ColorType::default(),
+            text_bg_color: ColorType::Use(Color::Yellow),
+            show_time: true,
+            time_text_color: ColorType::Use(Color::Green),
+            time_bg_color: ColorType::Color256(0xffffff),
+            split: " => ",
+            split_color: ColorType::Use(Color::Cyan),
+            split_bg_color: ColorType::Use(Color::Yellow),
             ..Default::default()
         },
         OutputBuilder::new()

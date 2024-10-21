@@ -17,6 +17,8 @@ pub struct Text<'a> {
     pub text_bg_color: ColorType,
     /// Whether the text should be bold.
     pub blod: bool,
+    /// endl
+    pub endl: bool,
 }
 
 impl<'a> Default for Text<'a> {
@@ -26,18 +28,19 @@ impl<'a> Default for Text<'a> {
             text_color: ColorType::default(),
             text_bg_color: ColorType::default(),
             blod: false,
+            endl: false,
         }
     }
 }
 
 impl<'a> Text<'a> {
-    /// 创建文本结构体
+    /// Creates a text structure
     ///
-    /// # 参数
-    /// - `Text`: 文本结构体
+    /// # Parameters
+    /// - `Text`: The text structure
     ///
-    /// # 返回值
-    /// - `Text`: 文本结构体
+    /// # Returns
+    /// - `Text`: The text structure
     pub fn new_from(text: &Text<'a>) -> Self {
         Self { ..text.clone() }
     }
@@ -55,7 +58,7 @@ impl<'a> Text<'a> {
         let blod: bool = self.blod.clone();
         let text_color: &String = &self.text_color.to_string();
         let text_bg_color: &String = &self.text_bg_color.get_str(DisplayType::Background);
-        let colored_text: String = if blod {
+        let mut colored_text: String = if blod {
             format!(
                 "{}{}{}{}{}{}",
                 text_bg_color, text_color, BLOD, text, UNBLOD, RESET
@@ -63,6 +66,9 @@ impl<'a> Text<'a> {
         } else {
             format!("{}{}{}{}", text_bg_color, text_color, text, RESET)
         };
+        if self.endl {
+            colored_text.push_str("\n");
+        }
         Cow::Owned(colored_text)
     }
 }
