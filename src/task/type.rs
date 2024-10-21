@@ -30,13 +30,19 @@ impl<'a> Task<'a> {
     /// Adds a text structure to the task list.
     ///
     /// # Parameters
-    /// - `&mut self`: The current task instance
-    /// - `new_text`: The text structure to be added
-    pub fn add(&mut self, new_text: Text<'a>) {
+    /// - `&mut self`: A mutable reference to the current task instance.
+    /// - `new_text`: The text structure to be added.
+    ///
+    /// # Returns
+    /// - `&mut Self`: A mutable reference to the current task instance, allowing method chaining.
+    ///
+    /// If the `new_text` is empty, no text is added and the method returns the current task instance unchanged.
+    pub fn add(&mut self, new_text: Text<'a>) -> &mut Self {
         if new_text.text.is_empty() {
-            return;
+            return self;
         }
         self.text_list.push(new_text);
+        self
     }
 
     /// Removes a task at the specified index.
@@ -119,11 +125,31 @@ impl<'a> Task<'a> {
         }
     }
 
-    /// Runs all tasks.
+    /// Clears all tasks from the task list.
     ///
     /// # Parameters
-    /// - `&mut self`: The current task instance
-    pub fn run_all(&mut self) {
+    /// - `&mut self`: A mutable reference to the current task instance.
+    ///
+    /// # Returns
+    /// - `&mut Self`: A mutable reference to the current task instance, allowing method chaining.
+    ///
+    /// This method removes all tasks from the task list.
+    pub fn clear(&mut self) -> &mut Self {
+        self.text_list.clear();
+        self
+    }
+
+    /// Runs all tasks and outputs the result as a string.
+    ///
+    /// # Parameters
+    /// - `&mut self`: A mutable reference to the current task instance.
+    ///
+    /// # Returns
+    /// - `&mut Self`: A mutable reference to the current task instance, allowing method chaining.
+    ///
+    /// The method clones the task list, clears the original list, and then processes each task by
+    /// converting its output to a string and printing the result.
+    pub fn run_all(&mut self) -> &mut Self {
         let copy_task_list: Vec<Text<'a>> = self.text_list.clone();
         self.clear();
         let mut output_str: String = String::new();
@@ -132,13 +158,6 @@ impl<'a> Task<'a> {
             output_str.push_str(colored_time);
         }
         println!("{}", output_str);
-    }
-
-    /// Clears all tasks.
-    ///
-    /// # Parameters
-    /// - `&mut self`: The current task instance
-    pub fn clear(&mut self) {
-        self.text_list.clear();
+        self
     }
 }
