@@ -1,9 +1,9 @@
 [package]
 name = "ltpp-output"
-version = "1.0.2"
+version = "1.0.3"
 edition = "2021"
 authors = ["ltpp-universe <root@ltpp.vip>"] 
 license = "MIT"
-description = "A Rust based output library that supports various output functions such as functions and constructors, and supports customizing text and background colors."
+description = "An atomic output library based on Rust that supports output functionalities through functions, builders, and other methods. It allows customization of text and background colors."
 keywords = ["output", "console", "log", "colour", "color"]
 repository = "https://github.com/ltpp-universe/ltpp-rust-output"
