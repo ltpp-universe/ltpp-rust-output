@@ -16,10 +16,6 @@
 - Supports multi-line output for multiple tasks.
 - Ensures atomic output operations.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
 ## Installation
 
 To install `ltpp-output` run cmd:
@@ -277,3 +273,15 @@ ColorType::Color256(0xffffff)
 ```rust
 ColorType::Rgb(255, 255, 255)
 ```
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request.
+
+## Contact
+
+For any inquiries, please reach out to the author at [ltpp-universe <root@ltpp.vip>](mailto:root@ltpp.vip).
