@@ -22,6 +22,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Installation
 
+To install `ltpp-output` run cmd:
+
 ```shell
 cargo add ltpp-output
 ```
