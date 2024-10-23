@@ -16,6 +16,10 @@
 - Supports multi-line output for multiple tasks.
 - Ensures atomic output operations.
 
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
 ## Installation
 
 ```shell
